@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\CheckStatus;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +21,7 @@ Route::get('/webservices', function () {
     return view('webservice');
 })->name('ourwebservice');
 
-
+/*->middleware('checkstatus') */
 
 Route::resource('coronas', 'CoronaController');
 
@@ -35,3 +35,11 @@ Route::get('/contact',function () {
     $data['title'] = "CESC | Contact";
     return view('contact', $data);
 })->name('contactus');
+
+
+Route::get('/fileupload',function () {
+    $data['title'] = "CESC | file upload";
+    return view('fileupload', $data);
+})->name('fileupload');
+
+Route::post('/fileuploadpost', 'Frontend@saveDocument')->name('fileuploadpost');

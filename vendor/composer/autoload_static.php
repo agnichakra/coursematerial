@@ -477,6 +477,7 @@ class ComposerStaticInitc176e99159d40f7b84cbcd894d913d9f
         'App\\Article' => __DIR__ . '/../..' . '/app/Article.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Corona' => __DIR__ . '/../..' . '/app/Corona.php',
+        'App\\Document' => __DIR__ . '/../..' . '/app/Document.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CoronaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CoronaController.php',

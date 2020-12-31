@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 /* must include */
 use Mail;
+use App\Document;
 class Frontend extends Controller
 {
     function contact(Request $request) {
@@ -55,15 +56,16 @@ class Frontend extends Controller
 
         /* end of sms gateway integration*/
 
-
+$mymail = "agnichakra.1984@gmail.com";
         $data['msg'] =$message;
         $data['name'] = $name;
         $data['mobile'] = $mobile;
         $data['subject'] =$subject;
         $data['email'] =$email;
         
-        Mail::send('mail.contact', $data, function($message) {
-          $message->to('agnichakra.1984@gmail.com')->subject('Mail form website');
+        
+        Mail::send('mail.contact', $data, function($message) use ($mymail) {
+          $message->to($mymail)->subject('Mail form website');
           $message->from('technophilix2020@gmail.com','Website');
         });
         
@@ -78,5 +80,30 @@ class Frontend extends Controller
         
         
         }
+
+
+        public function saveDocument(Request $request){
+          //validate the files
+          $this->validate($request,[
+              'image' =>'required',
+              'image.*' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
+          ]);
+          if ($request->hasFile('image')) {
+              $image = $request->file('image');
+              foreach ($image as $files) {
+                  $destinationPath = 'public/files/';
+                  $file_name = pathinfo($files->getClientOriginalName(), PATHINFO_FILENAME)."_".time(). "." . $files->getClientOriginalExtension();
+                  $files->move($destinationPath, $file_name);
+                  $data[] = array("filename" =>$file_name,
+                  "path" => $destinationPath.$file_name);
+              }
+          }
+
+          
+          $document= new Document();
+         //$file->filename=json_encode($data);
+          $document->insert($data);
+        return back()->withSuccess('Great! Image has been successfully uploaded.');
+      }
     
 }
