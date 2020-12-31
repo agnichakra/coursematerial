@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 /* must include */
 use Mail;
+use App\Document;
 class Frontend extends Controller
 {
     function contact(Request $request) {
@@ -78,5 +79,30 @@ class Frontend extends Controller
         
         
         }
+
+
+        public function saveDocument(Request $request){
+          //validate the files
+          $this->validate($request,[
+              'image' =>'required',
+              'image.*' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
+          ]);
+          if ($request->hasFile('image')) {
+              $image = $request->file('image');
+              foreach ($image as $files) {
+                  $destinationPath = 'public/files/';
+                  $file_name = $files->getClientOriginalName()."_".time() . "." . $files->getClientOriginalExtension();
+                  $files->move($destinationPath, $file_name);
+                  $data[
+
+
+                  ] ;
+              }
+          }
+          $file= new Document();
+          $file->filename=json_encode($data);
+          $file->save();
+          return back()->withSuccess('Great! Image has been successfully uploaded.');
+      }
     
 }

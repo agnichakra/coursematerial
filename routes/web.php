@@ -35,3 +35,11 @@ Route::get('/contact',function () {
     $data['title'] = "CESC | Contact";
     return view('contact', $data);
 })->name('contactus');
+
+
+Route::get('/fileupload',function () {
+    $data['title'] = "CESC | file upload";
+    return view('fileupload', $data);
+})->name('contactus');
+
+Route::post('/fileuploadpost', 'Frontend@saveDocument')->name('fileuploadpost');
