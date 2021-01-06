@@ -17,7 +17,7 @@ Route::get('/', function () {
      return view('welcome');
  });
 
-// ->middleware('checkstatus');
+// ->middleware('checkstatusefab');
 
 Route::get('/webservices', function () {
     return view('webservice');
@@ -52,10 +52,19 @@ Route::get('/showcountrydata',function () {
 })->name('countrydata');
 
 
-/*Route::group(['middleware'=>['mygroup']], function(){
+/* example of grouped middleware */
+
+/*
+Route::group(['middleware'=>['mygroup']], function(){
 
     Route::get('/', function () {
         return view('welcome');
     });
 
+    Route::get('/webservices', function () {
+        return view('webservice');
+    })->name('ourwebservice');
+
 });*/
+
+/* end of example of grouped middleware */

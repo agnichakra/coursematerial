@@ -14,7 +14,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        // \App\Http\Middleware\CheckStatus::class,
+    //   \App\Http\Middleware\CheckStatus::class,
        \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\CheckForMaintenanceMode::class,
@@ -57,7 +57,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
 
-        'checkstatus' =>\App\Http\Middleware\CheckStatus::class,
+       // 'checkstatusefab' =>\App\Http\Middleware\CheckStatus::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

@@ -12,7 +12,7 @@
 <h2>Migrations and Models</h2>
 <p>Before actually writing your first migration, make sure you have a database created for this app and add its credentials to the <pre>.env</pre> file located in the root of the project.
 </p>
-
+ {{abcd()}}
 <p>
 <pre><code>
     DB_CONNECTION=mysql

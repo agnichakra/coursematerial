@@ -15,13 +15,23 @@ class CheckStatus
      */
     public function handle($request, Closure $next)
     {
-        if(date('Y') == 2021) {
-
+       
+      
+      if($request->age  && $request->age < 18 ) {
+ /*
+ if($data["country_name"] != "India")
+ 
+ */
       
         // return redirect()->route('countrydata');
 
-            return abort(404);
-           // return redirect()->route('ourwebservice');
+         return abort(404);
+
+        // abcd();
+
+        /*  $data = get_country_from_ip();
+          echo $data["country_name"];*/
+          // return redirect()->route('ourwebservice');
         }
 
        return $next($request);
