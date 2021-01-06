@@ -8,7 +8,7 @@ class Document extends Model
 {
     //
 
-
-    protected $fillable = ['name', 'path'];
+    public $timestamps = true;
+    protected $fillable = ['filename', 'path'];
 
 }

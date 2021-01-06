@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\CheckStatus;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+     return view('welcome');
+ });
+
+// ->middleware('checkstatus');
 
 Route::get('/webservices', function () {
     return view('webservice');
@@ -40,6 +42,20 @@ Route::get('/contact',function () {
 Route::get('/fileupload',function () {
     $data['title'] = "CESC | file upload";
     return view('fileupload', $data);
-})->name('contactus');
+})->name('fileupload');
 
 Route::post('/fileuploadpost', 'Frontend@saveDocument')->name('fileuploadpost');
+
+Route::get('/showcountrydata',function () {
+    $data['title'] = "CESC | Country Data";
+    return view('country', $data);
+})->name('countrydata');
+
+
+/*Route::group(['middleware'=>['mygroup']], function(){
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+});*/
